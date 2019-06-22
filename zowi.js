@@ -4,6 +4,7 @@ const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 const bluetooth = require('node-bluetooth');
 const path = require('path');
+const {gestures} = require('./serial_interface')
 
 //Middleware
 app.use(express.static(path.join(__dirname, 'public')))
@@ -12,6 +13,12 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/public/index.html');
 });
+
+app.get('/api/gestures', (req, res) => {
+    const data = Object.keys(gestures)
+    res.json(data)
+})
+
 
 const device = new bluetooth.DeviceINQ();
 device.listPairedDevices(console.log);
@@ -36,11 +43,27 @@ bluetooth.connect(address, channel, (err, connection) => {
             console.log('[Zowi] said:', data);
         });
 
-        socket.on('zowi:cmd', function (data) {
+        socket.on('zowi:cmd', data => {
             const {cmd} = data;
             connection.write(Buffer.from(cmd, 'utf-8'), () => {
                 console.log(`[Server] said: ${cmd}`);
               });
         });
+
+        socket.on('zowi:gesture', data => {
+            const {gesture} = data
+            const currenGesture = gestures[gesture]
+            if(currenGesture) {
+                const cmd = `${currenGesture} \r\n`
+                connection.write(Buffer.from(cmd, 'utf-8'), () => {
+                    console.log(`[Server][Gesture] said: ${cmd}`);
+                });
+            }
+       
+            console.log(gesture)
+        })
     });
   });
+
+
+
