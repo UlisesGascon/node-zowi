@@ -6,6 +6,11 @@ const bluetooth = require('node-bluetooth');
 const path = require('path');
 const {gestures} = require('./serial_interface')
 
+const current = {
+    distance: NaN,
+    battery: NaN
+}
+
 //Middleware
 app.use(express.static(path.join(__dirname, 'public')))
 
@@ -19,6 +24,14 @@ app.get('/api/gestures', (req, res) => {
     res.json(data)
 })
 
+app.get('/api/status/:component?', (req, res) => {
+    const component = req.params.component
+    if(component) {
+        return res.json(current[component])
+    }
+
+    res.json(current)
+})
 
 const device = new bluetooth.DeviceINQ();
 device.listPairedDevices(console.log);
@@ -36,10 +49,24 @@ bluetooth.connect(address, channel, (err, connection) => {
     server.listen(3000);
 
     io.on('connection', function (socket) {
-
         connection.on('data', (buffer) => {
             const data = buffer.toString()
             socket.emit('zowi:said', data);
+
+            const regexDistance = /\&D (.*\d[1-9])\%/gm
+            if(data.match(regexDistance)) {
+                current.distance = parseInt(data.split(regexDistance)[1])
+                socket.emit('zowi:distance', current.distance)
+                socket.emit('zowi:status', current)
+            }
+
+            const regexBattery = /\&B (.*\d[1-9])\%/gm
+            if(data.match(regexBattery)) {
+                current.battery = parseFloat(data.split(regexBattery)[1])
+                socket.emit('zowi:battery', current.battery)
+                socket.emit('zowi:status', current)
+            }           
+
             console.log('[Zowi] said:', data);
         });
 
@@ -62,6 +89,21 @@ bluetooth.connect(address, channel, (err, connection) => {
        
             console.log(gesture)
         })
+
+        setInterval(() => {
+            const cmd = `D \r\n`
+            connection.write(Buffer.from(cmd, 'utf-8'), () => {
+                console.log(`[Server][Distance]: ${cmd}`);
+            });           
+        }, 100)
+
+        setInterval(() => {
+            const cmd = `B \r\n`
+            connection.write(Buffer.from(cmd, 'utf-8'), () => {
+                console.log(`[Server][Battery]: ${cmd}`);
+            });
+        }, 3000)
+
     });
   });
 

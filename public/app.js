@@ -5,6 +5,14 @@ socket.on('zowi:said', function (data) {
   addToLog(data)
 })
 
+socket.on('zowi:battery', data => {
+    batterySlc.innerHTML = `${data}%`;
+})
+
+socket.on('zowi:distance', data => {
+    distanceSlc.innerHTML = `${data}cm`;
+})
+
 function sendCmd (cmd) {
   socket.emit('zowi:cmd', { cmd: `${cmd} \r\n` })
 }
@@ -25,6 +33,8 @@ const gestureSlc = document.getElementById('gesture-list')
 const cmdActionSlc = document.getElementById('cmd-action');
 const cmdGestureSlc = document.getElementById('cmd-gesture');
 
+const batterySlc = document.getElementById('battery')
+const distanceSlc = document.getElementById('distance')
 
 cmdGestureSlc.addEventListener('click', evt => {
     const gesture = gestureSlc.value
@@ -83,7 +93,7 @@ document.body.addEventListener('keydown', evt => {
 
 
 function gesturesOption (gestures) {
-    const htmlContent = gestures.map(gesture => `<option value="${gesture}">${gesture}</option>`).join('')
+    const htmlContent = gestures.map(gesture => `<option value="${gesture}">${gesture.split('Zowi')[1]}</option>`).join('')
     gestureSlc.innerHTML = htmlContent
 }
 
