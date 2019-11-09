@@ -13,10 +13,10 @@ const io = initIO(server);
 
 (async () => {
     try {
-        const connection = await bluetooth.connect('Zowi');
+        const { writeMessage, onMessage } = await bluetooth.connect('Zowi');
         server.listen(3000);
         io.on('connection', function (socket) {
-            bluetooth.onMessage('data', (buffer) => {
+            onMessage('data', (buffer) => {
                 const data = buffer.toString()
                 socket.emit('zowi:said', data);
     
@@ -39,7 +39,7 @@ const io = initIO(server);
     
             socket.on('zowi:cmd', data => {
                 const {cmd} = data;
-                bluetooth.write(Buffer.from(cmd, 'utf-8'), () => {
+                writeMessage(Buffer.from(cmd, 'utf-8'), () => {
                     console.log(`[Server] said: ${cmd}`);
                     });
             });
@@ -49,29 +49,28 @@ const io = initIO(server);
                 const currentGesture = gestures[gesture]
                 if(currentGesture) {
                     const cmd = `${currentGesture} \r\n`
-                    bluetooth.write(Buffer.from(cmd, 'utf-8'), () => {
+                    writeMessage(Buffer.from(cmd, 'utf-8'), () => {
                         console.log(`[Server][Gesture] said: ${cmd}`);
                     });
                 }
             
                 console.log(gesture)
             })
-    
-            setInterval(() => {
-                const cmd = `D \r\n`
-                bluetooth.write(Buffer.from(cmd, 'utf-8'), () => {
-                    console.log(`[Server][Distance]: ${cmd}`);
-                });           
-            }, 100)
-    
-            setInterval(() => {
-                const cmd = `B \r\n`
-                bluetooth.write(Buffer.from(cmd, 'utf-8'), () => {
-                    console.log(`[Server][Battery]: ${cmd}`);
-                });
-            }, 3000)
-    
         });
+
+        setInterval(() => {
+            const cmd = `D \r\n`
+            writeMessage(Buffer.from(cmd, 'utf-8'), () => {
+                console.log(`[Server][Distance]: ${cmd}`);
+            });           
+        }, 100)
+
+        setInterval(() => {
+            const cmd = `B \r\n`
+            writeMessage(Buffer.from(cmd, 'utf-8'), () => {
+                console.log(`[Server][Battery]: ${cmd}`);
+            });
+        }, 3000)
 
     } catch (e) {
         console.error(e);
