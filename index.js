@@ -16,7 +16,7 @@ const io = initIO(server);
         const connection = await bluetooth.connect('Zowi');
         server.listen(3000);
         io.on('connection', function (socket) {
-            connection.on('data', (buffer) => {
+            bluetooth.onMessage('data', (buffer) => {
                 const data = buffer.toString()
                 socket.emit('zowi:said', data);
     
