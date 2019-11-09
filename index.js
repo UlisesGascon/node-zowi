@@ -1,7 +1,7 @@
 const initIO = require('socket.io');
 const {gestures} = require('./serial_interface')
 const initServer = require('./lib/server');
-const bluetooth = require('./lib/bluetooth')();
+const robot = require('./lib/zowi')();
 
 const current = {
     distance: NaN,
@@ -13,9 +13,9 @@ const io = initIO(server);
 
 (async () => {
     try {
-        const { writeMessage, onMessage } = await bluetooth.connect('Zowi');
+        const { writeMessage, onMessage } = await robot.start();
         server.listen(3000);
-        io.on('connection', function (socket) {
+        io.on('connection', (socket) => {
             onMessage('data', (buffer) => {
                 const data = buffer.toString()
                 socket.emit('zowi:said', data);
