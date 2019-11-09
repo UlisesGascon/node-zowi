@@ -1,37 +1,15 @@
-const express = require('express')
-const app = express();
-const server = require('http').createServer(app);
-const io = require('socket.io')(server);
+const initIO = require('socket.io');
 const bluetooth = require('node-bluetooth');
-const path = require('path');
 const {gestures} = require('./serial_interface')
+const initServer = require('./lib/server');
 
 const current = {
     distance: NaN,
     battery: NaN
 }
 
-//Middleware
-app.use(express.static(path.join(__dirname, 'public')))
-
-// Rutas
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/public/index.html');
-});
-
-app.get('/api/gestures', (req, res) => {
-    const data = Object.keys(gestures)
-    res.json(data)
-})
-
-app.get('/api/status/:component?', (req, res) => {
-    const component = req.params.component
-    if(component) {
-        return res.json(current[component])
-    }
-
-    res.json(current)
-})
+const server = initServer(gestures, current);
+const io = initIO(server);
 
 const device = new bluetooth.DeviceINQ();
 device.listPairedDevices(console.log);
@@ -40,7 +18,7 @@ device.listPairedDevices(console.log);
     address: 'b4-9d-0b-32-0a-1e',
     services: [ { channel: 1, name: 'SPP Dev' } ] } ]
 */
-const address = 'b4-9d-0b-32-0a-1e';
+const address = 'b4-9d-0b-33-8a-79';
 const channel = 1;
 
 bluetooth.connect(address, channel, (err, connection) => {
@@ -79,9 +57,9 @@ bluetooth.connect(address, channel, (err, connection) => {
 
         socket.on('zowi:gesture', data => {
             const {gesture} = data
-            const currenGesture = gestures[gesture]
-            if(currenGesture) {
-                const cmd = `${currenGesture} \r\n`
+            const currentGesture = gestures[gesture]
+            if(currentGesture) {
+                const cmd = `${currentGesture} \r\n`
                 connection.write(Buffer.from(cmd, 'utf-8'), () => {
                     console.log(`[Server][Gesture] said: ${cmd}`);
                 });
