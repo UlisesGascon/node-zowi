@@ -13,10 +13,10 @@ const io = initIO(server);
 
 (async () => {
     try {
-        const { writeMessage, onMessage } = await robot.start();
+        const { obey, onClaim } = await robot.start();
         server.listen(3000);
         io.on('connection', (socket) => {
-            onMessage('data', (buffer) => {
+            onClaim('data', (buffer) => {
                 const data = buffer.toString()
                 socket.emit('zowi:said', data);
     
@@ -39,7 +39,7 @@ const io = initIO(server);
     
             socket.on('zowi:cmd', data => {
                 const {cmd} = data;
-                writeMessage(Buffer.from(cmd, 'utf-8'), () => {
+                obey(Buffer.from(cmd, 'utf-8'), () => {
                     console.log(`[Server] said: ${cmd}`);
                     });
             });
@@ -49,7 +49,7 @@ const io = initIO(server);
                 const currentGesture = gestures[gesture]
                 if(currentGesture) {
                     const cmd = `${currentGesture} \r\n`
-                    writeMessage(Buffer.from(cmd, 'utf-8'), () => {
+                    obey(Buffer.from(cmd, 'utf-8'), () => {
                         console.log(`[Server][Gesture] said: ${cmd}`);
                     });
                 }
@@ -60,14 +60,14 @@ const io = initIO(server);
 
         setInterval(() => {
             const cmd = `D \r\n`
-            writeMessage(Buffer.from(cmd, 'utf-8'), () => {
+            obey(Buffer.from(cmd, 'utf-8'), () => {
                 console.log(`[Server][Distance]: ${cmd}`);
             });           
         }, 100)
 
         setInterval(() => {
             const cmd = `B \r\n`
-            writeMessage(Buffer.from(cmd, 'utf-8'), () => {
+            obey(Buffer.from(cmd, 'utf-8'), () => {
                 console.log(`[Server][Battery]: ${cmd}`);
             });
         }, 3000)
