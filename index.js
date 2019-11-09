@@ -7,7 +7,7 @@ const current = {
     battery: NaN
 }
 
-const server = initServer(robot.gestures, current);
+const server = initServer(robot, current);
 const io = initIO(server);
 
 (async () => {
