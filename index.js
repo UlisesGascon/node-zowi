@@ -1,7 +1,7 @@
 const initIO = require('socket.io');
-const bluetooth = require('node-bluetooth');
 const {gestures} = require('./serial_interface')
 const initServer = require('./lib/server');
+const bluetooth = require('./lib/bluetooth');
 
 const current = {
     distance: NaN,
@@ -11,17 +11,7 @@ const current = {
 const server = initServer(gestures, current);
 const io = initIO(server);
 
-const device = new bluetooth.DeviceINQ();
-device.listPairedDevices(console.log);
-/*
-[ { name: 'Zowi',
-    address: 'b4-9d-0b-32-0a-1e',
-    services: [ { channel: 1, name: 'SPP Dev' } ] } ]
-*/
-const address = 'b4-9d-0b-33-8a-79';
-const channel = 1;
-
-bluetooth.connect(address, channel, (err, connection) => {
+const handler = (err, connection) => {
     if(err) return console.error(err);
     
     server.listen(3000);
@@ -83,7 +73,6 @@ bluetooth.connect(address, channel, (err, connection) => {
         }, 3000)
 
     });
-  });
+  };
 
-
-
+  bluetooth.connect(handler);
