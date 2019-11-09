@@ -1,5 +1,4 @@
 const initIO = require('socket.io');
-const {gestures} = require('./serial_interface')
 const initServer = require('./lib/server');
 const robot = require('./lib/zowi')();
 
@@ -8,7 +7,7 @@ const current = {
     battery: NaN
 }
 
-const server = initServer(gestures, current);
+const server = initServer(robot.gestures, current);
 const io = initIO(server);
 
 (async () => {
