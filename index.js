@@ -12,10 +12,10 @@ const io = initIO(server);
 
 (async () => {
     try {
-        const { obey, onClaim } = await robot.start();
+        const zowi = await robot.start();
         server.listen(3000);
         io.on('connection', (socket) => {
-            onClaim('data', (buffer) => {
+            zowi.onClaim('data', (buffer) => {
                 const data = buffer.toString()
                 socket.emit('zowi:said', data);
     
@@ -33,42 +33,32 @@ const io = initIO(server);
                     socket.emit('zowi:status', current)
                 }           
     
-                console.log('[Zowi] said:', data);
+                // console.log('[Zowi] said:', data);
             });
     
-            socket.on('zowi:cmd', data => {
-                const {cmd} = data;
-                obey(Buffer.from(cmd, 'utf-8'), () => {
-                    console.log(`[Server] said: ${cmd}`);
-                    });
+            socket.on('zowi:cmd', async ({ cmd }) => {
+                await zowi.inject(cmd);
+                console.log(`[Server] said: ${cmd}`);
             });
     
-            socket.on('zowi:gesture', data => {
-                const {gesture} = data
-                const currentGesture = gestures[gesture]
-                if(currentGesture) {
-                    const cmd = `${currentGesture} \r\n`
-                    obey(Buffer.from(cmd, 'utf-8'), () => {
-                        console.log(`[Server][Gesture] said: ${cmd}`);
-                    });
-                }
-            
-                console.log(gesture)
+            socket.on('zowi:gesture', async ({ gesture }) => {
+                const requestGesture = zowi.obey(gesture);
+                await requestGesture();
+                console.log(`Requesting gesture ${gesture}...`);
+        
             })
         });
 
-        setInterval(() => {
-            const cmd = `D \r\n`
-            obey(Buffer.from(cmd, 'utf-8'), () => {
-                console.log(`[Server][Distance]: ${cmd}`);
-            });           
+        setInterval(async () => {
+            const requestDistance = zowi.obey('request-distance');
+            await requestDistance();
+            // console.log('Just request distance for the robot');
         }, 100)
 
-        setInterval(() => {
-            const cmd = `B \r\n`
-            obey(Buffer.from(cmd, 'utf-8'), () => {
-                console.log(`[Server][Battery]: ${cmd}`);
-            });
+        setInterval(async () => {
+            const requestBattery = zowi.obey('request-battery');
+            await requestBattery();
+            // console.log('Just request battery for the robot');
         }, 3000)
 
     } catch (e) {
