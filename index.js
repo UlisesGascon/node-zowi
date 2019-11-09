@@ -2,12 +2,7 @@ const initIO = require('socket.io');
 const initServer = require('./lib/server');
 const robot = require('./lib/zowi')();
 
-const current = {
-    distance: NaN,
-    battery: NaN
-}
-
-const server = initServer(robot, current);
+const server = initServer(robot);
 const io = initIO(server);
 
 (async () => {
@@ -21,16 +16,20 @@ const io = initIO(server);
     
                 const regexDistance = /\&D (.*\d[1-9])\%/gm
                 if(data.match(regexDistance)) {
-                    current.distance = parseInt(data.split(regexDistance)[1])
-                    socket.emit('zowi:distance', current.distance)
-                    socket.emit('zowi:status', current)
+                    zowi.setHealth({
+                        distance: parseInt(data.split(regexDistance)[1]),
+                    });
+                    socket.emit('zowi:distance', zowi.health().distance)
+                    socket.emit('zowi:status', zowi.health())
                 }
     
                 const regexBattery = /\&B (.*\d[1-9])\%/gm
                 if(data.match(regexBattery)) {
-                    current.battery = parseFloat(data.split(regexBattery)[1])
-                    socket.emit('zowi:battery', current.battery)
-                    socket.emit('zowi:status', current)
+                    zowi.setHealth({
+                        battery: parseFloat(data.split(regexBattery)[1]),
+                    });
+                    socket.emit('zowi:battery', zowi.health().battery)
+                    socket.emit('zowi:status', zowi.health())
                 }           
     
                 // console.log('[Zowi] said:', data);
