@@ -75,4 +75,4 @@ const handler = (err, connection) => {
     });
   };
 
-  bluetooth.connect(handler);
+  bluetooth.connect('Zowi', handler);
