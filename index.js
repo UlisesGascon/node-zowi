@@ -1,7 +1,7 @@
 const initIO = require('socket.io');
 const {gestures} = require('./serial_interface')
 const initServer = require('./lib/server');
-const bluetooth = require('./lib/bluetooth');
+const bluetooth = require('./lib/bluetooth')();
 
 const current = {
     distance: NaN,
@@ -39,7 +39,7 @@ const io = initIO(server);
     
             socket.on('zowi:cmd', data => {
                 const {cmd} = data;
-                connection.write(Buffer.from(cmd, 'utf-8'), () => {
+                bluetooth.write(Buffer.from(cmd, 'utf-8'), () => {
                     console.log(`[Server] said: ${cmd}`);
                     });
             });
@@ -49,7 +49,7 @@ const io = initIO(server);
                 const currentGesture = gestures[gesture]
                 if(currentGesture) {
                     const cmd = `${currentGesture} \r\n`
-                    connection.write(Buffer.from(cmd, 'utf-8'), () => {
+                    bluetooth.write(Buffer.from(cmd, 'utf-8'), () => {
                         console.log(`[Server][Gesture] said: ${cmd}`);
                     });
                 }
@@ -59,14 +59,14 @@ const io = initIO(server);
     
             setInterval(() => {
                 const cmd = `D \r\n`
-                connection.write(Buffer.from(cmd, 'utf-8'), () => {
+                bluetooth.write(Buffer.from(cmd, 'utf-8'), () => {
                     console.log(`[Server][Distance]: ${cmd}`);
                 });           
             }, 100)
     
             setInterval(() => {
                 const cmd = `B \r\n`
-                connection.write(Buffer.from(cmd, 'utf-8'), () => {
+                bluetooth.write(Buffer.from(cmd, 'utf-8'), () => {
                     console.log(`[Server][Battery]: ${cmd}`);
                 });
             }, 3000)
