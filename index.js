@@ -10,28 +10,11 @@ const io = initIO(server);
         const zowi = await robot.start();
         server.listen(3000);
         io.on('connection', (socket) => {
-            zowi.onClaim('data', (buffer) => {
+            zowi.onClaim('data', async (buffer) => {
                 const data = buffer.toString()
                 socket.emit('zowi:said', data);
-    
-                const regexDistance = /\&D (.*\d[1-9])\%/gm
-                if(data.match(regexDistance)) {
-                    zowi.setHealth({
-                        distance: parseInt(data.split(regexDistance)[1]),
-                    });
-                    socket.emit('zowi:distance', zowi.health().distance)
-                    socket.emit('zowi:status', zowi.health())
-                }
-    
-                const regexBattery = /\&B (.*\d[1-9])\%/gm
-                if(data.match(regexBattery)) {
-                    zowi.setHealth({
-                        battery: parseFloat(data.split(regexBattery)[1]),
-                    });
-                    socket.emit('zowi:battery', zowi.health().battery)
-                    socket.emit('zowi:status', zowi.health())
-                }           
-    
+                const outputList = await zowi.digest(data);
+                outputList.map(({ key, data }) => socket.emit(key, data));
                 // console.log('[Zowi] said:', data);
             });
     
