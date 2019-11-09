@@ -1,0 +1,33 @@
+{
+  "name": "zowi",
+  "version": "1.0.0",
+  "description": "Zowi bot wrapper",
+  "main": "zowi.js",
+  "scripts": {
+    "lint": "standard",
+    "lint:fix": "standard --fix",
+    "dev": "nodemon zowi.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UlisesGascon/node-zowi.git"
+  },
+  "author": "Ulises Gascón",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/UlisesGascon/node-zowi/issues"
+  },
+  "homepage": "https://github.com/UlisesGascon/node-zowi#readme",
+  "devDependencies": {
+    "nodemon": "^1.19.1",
+    "standard": "^12.0.1"
+  },
+  "dependencies": {
+    "@serialport/parser-readline": "^8.0.4",
+    "express": "^4.17.1",
+    "node-bluetooth": "^1.2.5",
+    "serialport": "^8.0.5",
+    "socket.io": "^2.2.0"
+  }
+}
