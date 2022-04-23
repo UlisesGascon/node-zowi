@@ -2,13 +2,13 @@ const { digest } = require('../lib/serial-digest')
 
 describe('Serial Digest', () => {
   it('Should recognize a distance message', () => {
-      const result = digest('&&D 27%%')
-      expect(result.distance).toBe(27)
+    const result = digest('&&D 27%%')
+    expect(result.distance).toBe(27)
   })
   it('Should recognize a battery message', () => {
     const result = digest('&&B 97.60%%')
     expect(result.battery).toBe(97.60)
-})
+  })
   it('Should recognize a valid mode message', () => {
     const result = digest('&&I 4%%')
     expect(result.mode).toBe('teleoperation')
