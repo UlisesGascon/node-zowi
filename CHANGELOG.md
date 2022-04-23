@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.3](https://github.com/UlisesGascon/node-zowi/compare/v0.2.2...v0.2.3) (2022-04-23)
+
+
+### Bug Fixes
+
+* bump npm and nodejs version in the CI ([0513243](https://github.com/UlisesGascon/node-zowi/commit/0513243c5bd3641d787b99c717e3dd0525ae5ace))
+
 ### [0.2.2](https://github.com/UlisesGascon/node-zowi/compare/v0.2.1...v0.2.2) (2022-04-23)
 
 
