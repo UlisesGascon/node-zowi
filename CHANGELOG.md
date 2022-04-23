@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.2](https://github.com/UlisesGascon/node-zowi/compare/v0.2.1...v0.2.2) (2022-04-23)
+
+
+### Features
+
+* removed rule from git ([f2c422d](https://github.com/UlisesGascon/node-zowi/commit/f2c422d2af7d1a6385628701187d68fd6bc5c3dc))
+
 ### [0.2.1](https://github.com/UlisesGascon/node-zowi/compare/v0.2.0...v0.2.1) (2022-04-23)
 
 
