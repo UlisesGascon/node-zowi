@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-  Nodejs wrapper for [BQ Zowi Robot](https://www.xataka.com/analisis/probamos-zowi-un-robot-con-cerebro-arduino-que-puede-dar-mas-de-lo-que-aparenta)
+  Nodejs wrapper for BQ Zowi Robot
 </p>
 
 <p align="center">
