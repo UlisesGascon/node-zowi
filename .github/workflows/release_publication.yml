@@ -1,9 +1,9 @@
 
+name: Publish Library in NPM
 on:
-  push:
-    branches:
-    - main
-name: Main Health
+  release:
+    types:
+      - created
 
 jobs:
   build:
