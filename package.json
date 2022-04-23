@@ -1,0 +1,69 @@
+{
+  "name": "node-zowi",
+  "version": "0.1.0",
+  "description": "Nodejs wrapper for BQ Zowi Robot",
+  "main": "src/index.js",
+  "source": "src/index.js",
+  "scripts": {
+    "test": "FORCE_COLOR=3 jest  --verbose",
+    "test:update": "FORCE_COLOR=3 jest --verbose --u",
+    "test:coverage": "FORCE_COLOR=3 jest --verbose  --coverage",
+    "test:watch": "FORCE_COLOR=3 jest --verbose  --watchAll",
+    "lint": "standard",
+    "lint:fix": "standard --fix",
+    "release": "standard-version",
+    "release:minor": "standard-version --release-as minor",
+    "release:patch": "standard-version --release-as patch",
+    "release:major": "standard-version --release-as major"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UlisesGascon/node-zowi.git"
+  },
+  "keywords": [
+    "arduino",
+    "bq",
+    "zowi",
+    "serialport",
+    "iot",
+    "robotics"
+  ],
+  "author": {
+    "name": "Ulises Gascón",
+    "url": "https://github.com/ulisesGascon"
+  },
+  "license": "GPL-v3.0",
+  "bugs": {
+    "url": "https://github.com/UlisesGascon/node-zowi/issues"
+  },
+  "homepage": "https://github.com/UlisesGascon/node-zowi#readme",
+  "standard": {
+    "env": [
+      "jest"
+    ]
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run lint && npm run test:coverage",
+      "post-merge": "npm i && npm i --package-lock-only"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "16.2.3",
+    "@commitlint/config-conventional": "16.2.1",
+    "husky": "7.0.4",
+    "jest": "27.5.1",
+    "jest-config": "27.5.1",
+    "standard": "17.0.0",
+    "standard-version": "9.3.2"
+  },
+  "dependencies": {
+    "@serialport/parser-readline": "10.3.0",
+    "debug": "4.3.4",
+    "serialport": "10.4.0"
+  }
+}
