@@ -1,33 +1,62 @@
 {
-  "name": "zowi",
-  "version": "1.0.0",
-  "description": "Zowi bot wrapper",
-  "main": "zowi.js",
+  "name": "node-zowi",
+  "version": "0.1.1",
+  "description": "Nodejs wrapper for BQ Zowi Robot",
+  "main": "src/index.js",
+  "source": "src/index.js",
   "scripts": {
+    "test": "FORCE_COLOR=3 jest  --verbose",
+    "test:update": "FORCE_COLOR=3 jest --verbose --u",
+    "test:coverage": "FORCE_COLOR=3 jest --verbose  --coverage",
+    "test:watch": "FORCE_COLOR=3 jest --verbose  --watchAll",
     "lint": "standard",
     "lint:fix": "standard --fix",
-    "dev": "nodemon zowi.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "release": "standard-version",
+    "release:minor": "standard-version --release-as minor",
+    "release:patch": "standard-version --release-as patch",
+    "release:major": "standard-version --release-as major"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/UlisesGascon/node-zowi.git"
   },
-  "author": "Ulises Gascón",
-  "license": "AGPL-3.0",
+  "keywords": [
+    "arduino",
+    "bq",
+    "zowi",
+    "serialport",
+    "iot",
+    "robotics"
+  ],
+  "author": {
+    "name": "Ulises Gascón",
+    "url": "https://github.com/ulisesGascon"
+  },
+  "license": "GPL-v3.0",
   "bugs": {
     "url": "https://github.com/UlisesGascon/node-zowi/issues"
   },
   "homepage": "https://github.com/UlisesGascon/node-zowi#readme",
+  "standard": {
+    "env": [
+      "jest"
+    ]
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "devDependencies": {
-    "nodemon": "^1.19.1",
-    "standard": "^12.0.1"
+    "@commitlint/cli": "16.2.3",
+    "@commitlint/config-conventional": "16.2.1",
+    "husky": "7.0.4",
+    "jest": "27.5.1",
+    "jest-config": "^27.5.1",
+    "standard": "17.0.0",
+    "standard-version": "9.3.2"
   },
   "dependencies": {
-    "@serialport/parser-readline": "^8.0.4",
-    "express": "^4.17.1",
-    "node-bluetooth": "^1.2.5",
-    "serialport": "^8.0.5",
-    "socket.io": "^2.2.0"
+    "@serialport/parser-readline": "10.3.0",
+    "debug": "4.3.4",
+    "serialport": "10.4.0"
   }
 }
