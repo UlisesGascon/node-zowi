@@ -1,0 +1,456 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Serial Commands Buzzer Should have default values 1`] = `
+"T 1000 150 
+"
+`;
+
+exports[`Serial Commands General Command: "hardStop" 1`] = `
+"S 
+"
+`;
+
+exports[`Serial Commands General Command: "requestBatteryMesurament" 1`] = `
+"B 
+"
+`;
+
+exports[`Serial Commands General Command: "requestCurrentProgramId" 1`] = `
+"I 
+"
+`;
+
+exports[`Serial Commands General Command: "requestDistanceMesurament" 1`] = `
+"D 
+"
+`;
+
+exports[`Serial Commands General Command: "requestName" 1`] = `
+"E 
+"
+`;
+
+exports[`Serial Commands General Command: "requestNoiseMesurament" 1`] = `
+"N 
+"
+`;
+
+exports[`Serial Commands General Command: "setName" 1`] = `
+"R undefined 
+"
+`;
+
+exports[`Serial Commands Gestures Gesture: "angry" 1`] = `
+"H 8 
+"
+`;
+
+exports[`Serial Commands Gestures Gesture: "confused" 1`] = `
+"H 6 
+"
+`;
+
+exports[`Serial Commands Gestures Gesture: "crazyWave" 1`] = `
+"H 11 
+"
+`;
+
+exports[`Serial Commands Gestures Gesture: "fart" 1`] = `
+"H 5 
+"
+`;
+
+exports[`Serial Commands Gestures Gesture: "fretful" 1`] = `
+"H 9 
+"
+`;
+
+exports[`Serial Commands Gestures Gesture: "gameOver" 1`] = `
+"H 13 
+"
+`;
+
+exports[`Serial Commands Gestures Gesture: "happy" 1`] = `
+"H 1 
+"
+`;
+
+exports[`Serial Commands Gestures Gesture: "love" 1`] = `
+"H 7 
+"
+`;
+
+exports[`Serial Commands Gestures Gesture: "magic" 1`] = `
+"H 10 
+"
+`;
+
+exports[`Serial Commands Gestures Gesture: "sad" 1`] = `
+"H 3 
+"
+`;
+
+exports[`Serial Commands Gestures Gesture: "sleeping" 1`] = `
+"H 4 
+"
+`;
+
+exports[`Serial Commands Gestures Gesture: "superHappy" 1`] = `
+"H 2 
+"
+`;
+
+exports[`Serial Commands Gestures Gesture: "victory" 1`] = `
+"H 12 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "ascendingTurn" 1`] = `
+"M 20 500 15 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "ascendingTurn" 2`] = `
+"M 20 123 15 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "ascendingTurn" 3`] = `
+"M 20 123 456 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "bendLeft" 1`] = `
+"M 15 500 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "bendLeft" 2`] = `
+"M 15 123 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "bendRight" 1`] = `
+"M 16 500 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "bendRight" 2`] = `
+"M 16 123 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "crusaitoLeft" 1`] = `
+"M 9 1000 30 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "crusaitoLeft" 2`] = `
+"M 9 123 30 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "crusaitoLeft" 3`] = `
+"M 9 123 456 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "crusaitoRight" 1`] = `
+"M 10 1000 30 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "crusaitoRight" 2`] = `
+"M 10 123 30 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "crusaitoRight" 3`] = `
+"M 10 123 456 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "flappingLeft" 1`] = `
+"M 12 1000 30 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "flappingLeft" 2`] = `
+"M 12 123 30 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "flappingLeft" 3`] = `
+"M 12 123 456 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "flappingRight" 1`] = `
+"M 13 1000 30 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "flappingRight" 2`] = `
+"M 13 123 30 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "flappingRight" 3`] = `
+"M 13 123 456 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "forward" 1`] = `
+"M 1 1000 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "forward" 2`] = `
+"M 1 123 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "jitter" 1`] = `
+"M 19 500 20 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "jitter" 2`] = `
+"M 19 123 20 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "jitter" 3`] = `
+"M 19 123 456 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "jump" 1`] = `
+"M 11 1000 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "jump" 2`] = `
+"M 11 123 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "left" 1`] = `
+"M 3 1000 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "left" 2`] = `
+"M 3 123 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "moonwalkerLeft" 1`] = `
+"M 6 1000 30 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "moonwalkerLeft" 2`] = `
+"M 6 123 30 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "moonwalkerLeft" 3`] = `
+"M 6 123 456 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "moonwalkerRight" 1`] = `
+"M 7 1000 30 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "moonwalkerRight" 2`] = `
+"M 7 123 30 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "moonwalkerRight" 3`] = `
+"M 7 123 456 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "reverse" 1`] = `
+"M 2 1000 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "reverse" 2`] = `
+"M 2 123 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "right" 1`] = `
+"M 4 1000 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "right" 2`] = `
+"M 4 123 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "shakeLegLeft" 1`] = `
+"M 17 500 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "shakeLegLeft" 2`] = `
+"M 17 123 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "shakeLegRight" 1`] = `
+"M 18 500 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "shakeLegRight" 2`] = `
+"M 18 123 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "swing" 1`] = `
+"M 8 1000 30 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "swing" 2`] = `
+"M 8 123 30 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "swing" 3`] = `
+"M 8 123 456 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "tiptoeSwing" 1`] = `
+"M 14 1000 20 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "tiptoeSwing" 2`] = `
+"M 14 123 20 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "tiptoeSwing" 3`] = `
+"M 14 123 456 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "updown" 1`] = `
+"M 5 1000 30 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "updown" 2`] = `
+"M 5 123 30 
+"
+`;
+
+exports[`Serial Commands Movements Movement: "updown" 3`] = `
+"M 5 123 456 
+"
+`;
+
+exports[`Serial Commands Sounds Sound: "buttonPushed" 1`] = `
+"K 19 
+"
+`;
+
+exports[`Serial Commands Sounds Sound: "confused" 1`] = `
+"K 12 
+"
+`;
+
+exports[`Serial Commands Sounds Sound: "connection" 1`] = `
+"K 1 
+"
+`;
+
+exports[`Serial Commands Sounds Sound: "cuddy" 1`] = `
+"K 6 
+"
+`;
+
+exports[`Serial Commands Sounds Sound: "disconnection" 1`] = `
+"K 2 
+"
+`;
+
+exports[`Serial Commands Sounds Sound: "fart1" 1`] = `
+"K 13 
+"
+`;
+
+exports[`Serial Commands Sounds Sound: "fart2" 1`] = `
+"K 14 
+"
+`;
+
+exports[`Serial Commands Sounds Sound: "fart3" 1`] = `
+"K 15 
+"
+`;
+
+exports[`Serial Commands Sounds Sound: "happy" 1`] = `
+"K 8 
+"
+`;
+
+exports[`Serial Commands Sounds Sound: "happyShort" 1`] = `
+"K 10 
+"
+`;
+
+exports[`Serial Commands Sounds Sound: "model1" 1`] = `
+"K 16 
+"
+`;
+
+exports[`Serial Commands Sounds Sound: "model2" 1`] = `
+"K 17 
+"
+`;
+
+exports[`Serial Commands Sounds Sound: "model3" 1`] = `
+"K 18 
+"
+`;
+
+exports[`Serial Commands Sounds Sound: "ohOoh1" 1`] = `
+"K 4 
+"
+`;
+
+exports[`Serial Commands Sounds Sound: "ohOoh2" 1`] = `
+"K 5 
+"
+`;
+
+exports[`Serial Commands Sounds Sound: "sad" 1`] = `
+"K 11 
+"
+`;
+
+exports[`Serial Commands Sounds Sound: "sleeping" 1`] = `
+"K 7 
+"
+`;
+
+exports[`Serial Commands Sounds Sound: "superHappy" 1`] = `
+"K 9 
+"
+`;
+
+exports[`Serial Commands Sounds Sound: "surprise" 1`] = `
+"K 3 
+"
+`;
