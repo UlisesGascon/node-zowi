@@ -1,6 +1,6 @@
 {
   "name": "node-zowi",
-  "version": "0.1.1",
+  "version": "0.1.0",
   "description": "Nodejs wrapper for BQ Zowi Robot",
   "main": "src/index.js",
   "source": "src/index.js",
@@ -45,12 +45,19 @@
   "engines": {
     "node": ">=14.0.0"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run lint && npm run test:coverage",
+      "post-merge": "npm i && npm i --package-lock-only"
+    }
+  },
   "devDependencies": {
     "@commitlint/cli": "16.2.3",
     "@commitlint/config-conventional": "16.2.1",
     "husky": "7.0.4",
     "jest": "27.5.1",
-    "jest-config": "^27.5.1",
+    "jest-config": "27.5.1",
     "standard": "17.0.0",
     "standard-version": "9.3.2"
   },
