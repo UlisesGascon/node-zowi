@@ -1,6 +1,6 @@
 {
   "name": "node-zowi",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Nodejs wrapper for BQ Zowi Robot",
   "main": "src/index.js",
   "source": "src/index.js",
