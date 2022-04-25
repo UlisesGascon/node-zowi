@@ -447,3 +447,9 @@ __tests__/
 __fixtures__/
 coverage/
 .github/
+.vscode/
+CODE_OF_CONDUCT.md    
+CONTRIBUTING.md
+README.md
+jest.config.js
+.nvmrc
