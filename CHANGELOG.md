@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.5](https://github.com/UlisesGascon/node-zowi/compare/v0.2.4...v0.2.5) (2022-04-28)
+
+
+### Bug Fixes
+
+* deployment pipeline ([3dab8c7](https://github.com/UlisesGascon/node-zowi/commit/3dab8c77220980ccd7cf680fec64c896d467c219))
+
 ### [0.2.4](https://github.com/UlisesGascon/node-zowi/compare/v0.2.3...v0.2.4) (2022-04-23)
 
 ### [0.2.3](https://github.com/UlisesGascon/node-zowi/compare/v0.2.2...v0.2.3) (2022-04-23)
